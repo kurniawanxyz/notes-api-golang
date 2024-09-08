@@ -1,31 +1,33 @@
 package usecase
 
-import "notes/domain"
+import (
+	"notes/domain"
+)
 
 type NoteUsecase struct {
 	repo domain.NoteRepository
 }
 
-func handleStore(repo domain.NoteRepository) *NoteUsecase {
+func NewNoteUsecase(repo domain.NoteRepository) *NoteUsecase {
 	return &NoteUsecase{repo}
 }
 
-func (uc *NoteUsecase) handleGet() ([]domain.Note, error) {
+func (uc *NoteUsecase) Get() ([]domain.Note, error) {
 	return uc.repo.Get()
 }
 
-func (uc *NoteUsecase) handleShow(id uint) (*domain.Note, error) {
+func (uc *NoteUsecase) Show(id uint) (*domain.Note, error) {
 	return uc.repo.Show(id)
 }
 
-func (uc *NoteUsecase) handleStore(data *domain.Note) error {
+func (uc *NoteUsecase) Store(data *domain.Note) error {
 	return uc.repo.Store(data)
 }
 
-func (uc *NoteUsecase) handleUpdate(data *domain.Note) error {
+func (uc *NoteUsecase) Update(data *domain.Note) error {
 	return uc.repo.Update(data)
 }
 
-func (uc *NoteUsecase) handleDelete(id uint) error {
+func (uc *NoteUsecase) Delete(id uint) error {
 	return uc.repo.Delete(id)
 }
